@@ -20,7 +20,7 @@ Route::get('/', function () {
 
 
 Route::get('/dashboard', function () {
-    return view('dashboard');
+    return redirect('/../drinks');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::resource('/drinks', DrinkController::class)->middleware(['auth']);
