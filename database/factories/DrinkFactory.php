@@ -4,6 +4,8 @@ namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
 
+// this is where you fill the information on the database 
+
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Drink>
  */
@@ -26,3 +28,5 @@ class DrinkFactory extends Factory
         ];
     }
 }
+
+// the tables will be filled with the information specified with the code above

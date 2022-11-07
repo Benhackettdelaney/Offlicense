@@ -18,3 +18,5 @@ class DrinkSeeder extends Seeder
         Drink::factory()->times(50)->create();
     }
 }
+
+//  this posts the fake information from the factory to the databse and then it displays onto the website from the DrinkController

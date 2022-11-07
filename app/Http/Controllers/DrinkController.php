@@ -6,6 +6,9 @@ use App\Models\Drink;
 use Illuminate\Http\Request;
 use Illuminate\support\facades\Auth;
 
+// the controller is used to display the functions that we put in such as delete, edit and index
+// view all drinks works by the index showing information from the database to the controller which displays it to the website
+
 class DrinkController extends Controller
 {
     /**
@@ -16,6 +19,8 @@ class DrinkController extends Controller
     public function index()
     {
        // $drinks = Drink::where('user_id', Auth::id())->latest('updated_at')->paginate(9);
+    //    paginate is the columns on the site users can switch between to see more drinks
+    // connected to the index page of the website
        $drinks = Drink::paginate(10);
         return view('Drinks.index')->with('drinks', $drinks);
      
@@ -26,6 +31,7 @@ class DrinkController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    // connected to the create function displays create page after button has been selected
     public function create()
     {
         return view('drinks.create');
@@ -59,6 +65,7 @@ class DrinkController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+    // displays the function show 
     public function show(Drink $drink)
     {
         return view('drinks.show')->with('drink', $drink);
@@ -71,6 +78,8 @@ class DrinkController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+
+    //  this is used to change the information of the drinks that are on the website and database
     public function edit(Drink $drink)
     {
         return view('drinks.edit')->with('drink', $drink);
@@ -84,6 +93,7 @@ class DrinkController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+    // after editing on the database and the website the drink updates to whatever it has been changed to and displays it on the databse and website
     public function update(Request $request, Drink $drink)
     {
         $drink->update([
@@ -103,6 +113,7 @@ class DrinkController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+    // deletes the drink from the website and the database 
     public function destroy(Drink $drink)
     {
         $drink->delete();
