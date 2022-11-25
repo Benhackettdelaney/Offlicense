@@ -1,7 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\DrinkController as AdminDrinkkController;
-use App\Http\Controllers\User\DrinkController as UserController;
+use App\Http\Controllers\User\DrinkController as UserDrinkController;
 use App\Http\Controllers\Admin\PublisherController as AdminPublisherController;
 use App\Http\Controllers\User\PublisherController as UserPublisherController;
 
