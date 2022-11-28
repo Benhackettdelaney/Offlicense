@@ -21,6 +21,7 @@
                         {{ $drink->name }}
                         {{$drink->price}}
                         {{$drink->quantity}}
+                        {{$drink->alcohol_level}}
 
                     </p>
 

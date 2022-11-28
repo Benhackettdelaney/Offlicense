@@ -34,30 +34,30 @@
                         </td>
                         </tr>
                         <tr>
-                            <td class="font-bold ">Title  </td>
+                            <td class="font-bold ">name  </td>
                             <td>{{ $drink->name }}</td>
                         </tr>
                         <tr>
-                            <td class="font-bold ">Author  </td>
+                            <td class="font-bold ">price  </td>
                             <td>{{ $drink->price }}</td>
                         </tr>
                         <tr>
-                            <td class="font-bold">Description </td>
+                            <td class="font-bold">quantity </td>
                             <td>{{ $drink->quantity }}</td>
                         </tr>
                         <tr>
-                            <td class="font-bold ">Category </td>
+                            <td class="font-bold ">alcohol_level </td>
                             <td>{{ $drink->alcohol_level }}</td>
                         </tr>
 
                         <tr>
-                            <td class="font-bold ">Publisher Name </td>
-                            <td>{{ $drink->publisher->name }}</td>
+                            <td class="font-bold ">Distillery Name </td>
+                            <td>{{ $drink->distillery->name }}</td>
                         </tr>
 
                         <tr>
-                            <td class="font-bold ">Publisher Address </td>
-                            <td>{{ $drink->publisher->address }}</td>
+                            <td class="font-bold ">Distillery Address </td>
+                            <td>{{ $drink->distillery->address }}</td>
                         </tr>
 
                     </tbody>

@@ -11,7 +11,7 @@
                 <form action="{{ route('admin.drinks.store') }}" method="post" enctype="multipart/form-data">
                     @csrf
                     <x-text-input
-                        type="name"
+                        type="text"
                         name="name"
                         field="name"
                         placeholder="name"
@@ -20,7 +20,7 @@
                         :value="@old('name')"></x-text-input>
 
                     <x-text-input
-                        type="pice"
+                        type="text"
                         name="price"
                         field="price"
                         placeholder="price..."
@@ -36,7 +36,7 @@
                         :value="@old('quantity')"></x-textarea>
 
                     <x-text-input
-                        type="alcohol_level"
+                        type="text"
                         name="alcohol_level"
                         field="alcohol_level"
                         placeholder="alcohol level..."
@@ -46,11 +46,11 @@
                     
 
                     <div class="form-group">
-                        <label for="publisher">Publisher</label>
-                        <select name="publisher_id">
-                          @foreach ($publishers as $publisher)
-                            <option value="{{$publisher->id}}" {{(old('publisher_id') == $publisher->id) ? "selected" : ""}}>
-                              {{$publisher->name}}
+                        <label for="distillery">Distillery</label>
+                        <select name="distillery_id">
+                          @foreach ($distilleries as $distillery)
+                            <option value="{{$distillery->id}}" {{(old('distillery_id') == $distillery->id) ? "selected" : ""}}>
+                              {{$distillery->name}}
                             </option>
                           @endforeach
                      </select>

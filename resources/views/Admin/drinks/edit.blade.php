@@ -13,7 +13,7 @@
                     @method('put')
                     @csrf
                     <x-text-input
-                    type="name"
+                    type="text"
                     name="name"
                     field="name"
                     placeholder="name"
@@ -22,7 +22,7 @@
                    ></x-text-input>
 
                 <x-text-input
-                    type="price"
+                    type="text"
                     name="price"
                     field="price"
                     placeholder="price..."
@@ -38,7 +38,7 @@
                     :value="@old('quantity', $drink->quantity)"></x-textarea>
 
                 <x-text-input
-                    type="alcohol_level"
+                    type="text"
                     name="alcohol_level"
                     field="alcohol_level"
                     placeholder="alcohol level..."
