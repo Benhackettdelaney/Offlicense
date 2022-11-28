@@ -40,17 +40,17 @@ class HomeController extends Controller
         return redirect()->route($home);
     }
 
-    public function publisherIndex(Request $request)
+    public function distilleryIndex(Request $request)
     {
 
         $user = Auth::user();
         $home = 'home';
 
         if($user->hasRole('admin')){
-            $home = 'admin.publishers.index';
+            $home = 'admin.distillerys.index';  
         }
         else if ($user->hasRole('user')){
-            $home = 'user.publishers.index';
+            $home = 'user.distillerys.index';
         }
         return redirect()->route($home);
     }

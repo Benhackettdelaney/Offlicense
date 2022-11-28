@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Drink;
-use App\Models\Publisher;
+use App\Models\Distillery;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -21,9 +21,9 @@ class DrinkController extends Controller
         $user = Auth::user();
         $user->authorizeRoles('admin');
 
-        //$books = Book::all();
-       // $books = Book::paginate(10);
-       $drinks = Drink::with('publisher')->get();
+        $drinks = Drink::all();
+       $drinks = Drink::paginate(10);
+       $drinks = Drink::with('Distillery')->get();
 
         return view('admin.drinks.index')->with('drinks', $drinks);
     }
@@ -38,8 +38,8 @@ class DrinkController extends Controller
         $user = Auth::user();
         $user->authorizeRoles('admin');
 
-        $publishers = Publisher::all();
-        return view('admin.drinks.create')->with('publishers',$publishers);
+        $distilleries = Distillery::all();
+        return view('admin.drinks.create')->with('distilleries',$distilleries);
     }
 
     /**
@@ -77,7 +77,7 @@ class DrinkController extends Controller
             'quantity' => $request->quantity,
             // 'book_image' => $filename,
             'alcohol_level' => $request->alcohol_level,
-            'publisher_id' => $request->publisher_id
+            'distillery_id' => $request->distillery_id
         ]);
 
         return to_route('admin.drinks.index');

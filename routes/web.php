@@ -2,7 +2,7 @@
 
 use App\Http\Controllers\Admin\DrinkController as AdminDrinkkController;
 use App\Http\Controllers\User\DrinkController as UserDrinkController;
-use App\Http\Controllers\Admin\PublisherController as AdminPublisherController;
+use App\Http\Controllers\Admin\DrinkController as AdminDrinkController;
 use App\Http\Controllers\User\PublisherController as UserPublisherController;
 
 use Database\Seeders\DrinkSeeder;
@@ -29,7 +29,7 @@ Route::get('/dashboard', function () {
 
 require __DIR__.'/auth.php';
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home.index');
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/home/publishers', [App\Http\Controllers\HomeController::class, 'publisherIndex'])->name('home.publisher.index');
 
 

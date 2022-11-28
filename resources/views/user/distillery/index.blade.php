@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('All Drinks') }}
+            {{ __('All Distilleries') }}
         </h2>
     </x-slot>
 
@@ -11,26 +11,27 @@
             <x-alert-success>
                 {{ session('success') }}
             </x-alert-success>
-            <a href="{{ route('admin.drinks.create') }}" class="btn-link btn-lg mb-2">Add a Drink</a>
-            @forelse ($drinks as $drink)
+
+            @forelse ($distilleries as $distillery)
                 <div class="my-6 p-6 bg-white border-b border-gray-200 shadow-sm sm:rounded-lg">
                     <h2 class="font-bold text-2xl">
-                    <a href="{{ route('admin.drinks.show', $drinks) }}"> <strong> Name </strong> {{ $drink->name }}</a>
+                    <a href="{{ route('user.distilleries.show', $distillery) }}"> <strong> Distillery ID </strong> {{ $distillery->id }}</a>
                     </h2>
                     <p class="mt-2">
 
-                        <h3 class="font-bold text-1xl"> <strong> Publisher Name </strong>
-                        {{$drink->publisher->name}} </h3>
-                        {{$drink->name}}
+                        <h3> <strong> Distillery Name </strong>
+                        {{$distillery->name}} </h3>
+                        <h3> <strong> Distillery Address </strong>
+                        {{$distillery->address}}
 
                     </p>
 
                 </div>
             @empty
-            <p>No drinks</p>
+            <p>No distilleries found</p>
             @endforelse
             <!-- This line of code simply adds the links for Pagination-->
-            {{-- {{$drinks->links()}} --}}
+            {{-- {{$distilleries->links()}} --}}
         </div>
     </div>
 </x-app-layout>

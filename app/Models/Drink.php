@@ -10,9 +10,9 @@ class Drink extends Model
     protected $guarded = [];
     use HasFactory;
 
-    public function publisher()
+    public function distillery()
     {
-        return $this->belongsTo(Publisher::class);
+        return $this->belongsTo(Distillery::class);
     }
 
     public function authors()
