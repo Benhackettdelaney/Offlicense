@@ -52,7 +52,6 @@ class DrinkController extends Controller
             'name' => $request->name,
             'price' => $request->price,
             'quantity' => $request->quantity,
-            // 'book_image' => "public\image\Tess_the_TickTock_Dog.jpg",
             'alcohol_level' => $request->alcohol_level
         ]);
 
@@ -100,7 +99,6 @@ class DrinkController extends Controller
             'name' => $request->name,
             'price' => $request->price,
             'quantity' => $request->quantity,
-            // 'book_image' => $filename,
             'alcohol_level' => $request->alcohol_level
         ]);
 

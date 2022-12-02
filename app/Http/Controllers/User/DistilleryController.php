@@ -20,9 +20,9 @@ class DistilleryController extends Controller
         $user->authorizeRoles('user');
 
        $distilleries = Distillery::all();
-       // $publishers = Publisher::paginate(10);
-       // need to test if with 'books' works
-       // $publishers = Publisher::with('books')->get();
+       // $publishers = Distillery::paginate(10);
+       // need to test if with 'drinks' works
+       // $publishers = Distillery::with('drinks')->get();
 
         return view('user.distilleries.index')->with('distilleries', $distilleries);
     }

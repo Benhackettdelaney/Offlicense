@@ -19,6 +19,7 @@
                     placeholder="name"
                     class="w-full"
                     autocomplete="off"
+                    :value="@old('name', $drink->name)"
                    ></x-text-input>
 
                 <x-text-input
@@ -29,13 +30,14 @@
                     class="w-full mt-6"
                     :value="@old('price', $drink->price)"></x-text-input>
 
-                <x-textarea
+                <x-text-input
+                    type="text"
                     name="quantity"
                     rows="10"
                     field="quantity"
                     placeholder="quantity..."
                     class="w-full mt-6"
-                    :value="@old('quantity', $drink->quantity)"></x-textarea>
+                    :value="@old('quantity', $drink->quantity)"></x-text-input>
 
                 <x-text-input
                     type="text"

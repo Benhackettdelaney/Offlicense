@@ -21,7 +21,9 @@ class DatabaseSeeder extends Seeder
         $this->call(UserSeeder::class);
         // I only need to call the PublisherSeeder, this calls hasBooks() which
         // seeds the drinks table with 20 books for each Publisher.
-        $this->call(DrinkSeeder::class);
+        // $this->call(DrinkSeeder::class);
+        $this->call(DistillerySeeder::class);
+
 
     }
 }

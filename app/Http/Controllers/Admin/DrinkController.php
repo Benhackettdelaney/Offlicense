@@ -63,19 +63,11 @@ class DrinkController extends Controller
             'publisher_id' => 'required'
         ]);
 
-        // $book_image = $request->file('book_image');
-        // $extension = $book_image->getClientOriginalExtension();
-        // the filename needs to be unique, I use title and add the date to guarantee a unique filename, ISBN would be better here.
-        // $filename = date('Y-m-d-His') . '_' . $request->input('title') . '.'. $extension;
-
-        // store the file $book_image in /public/images, and name it $filename
-        // $path = $book_image->storeAs('public/images', $filename);
-
+       
         Drink::create([
             'name' => $request->name,
             'price' => $request->price,
             'quantity' => $request->quantity,
-            // 'book_image' => $filename,
             'alcohol_level' => $request->alcohol_level,
             'distillery_id' => $request->distillery_id
         ]);
@@ -86,7 +78,7 @@ class DrinkController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Drink  $book
+     * @param  \App\Models\Drink  
      * @return \Illuminate\Http\Response
      */
     public function show(Drink $drink)
@@ -112,17 +104,13 @@ class DrinkController extends Controller
         $user = Auth::user();
         $user->authorizeRoles('admin');
 
-        // This user id check below was implemented as part of LiteNote
-        // I don't have a user id linked to books,so I don't need it here - in CA 2 we will allow only admin users to edit books.
-        // if($book->user_id != Auth::id()) {
-        //     return abort(403);
-        // }
+      
 
-      //  dd($book);
+    
 
         // Load the edit view which will display the edit form
-        // Pass in the current book so that it appears in the form.
-        return view('admin.drink.edit')->with('drink', $drink);
+        // Pass in the current drink so that it appears in the form.
+        return view('admin.drinks.edit')->with('drink', $drink);
     }
 
     /**
@@ -143,23 +131,15 @@ class DrinkController extends Controller
             'price' => 'required',
             'quantity' => 'required|max:500',
             'alcohol_level' =>'required',
-            //'book_image' => 'file|image|dimensions:width=300,height=400'
-        //    'book_image' => 'file|image'
+        
         ]);
 
-        // $book_image = $request->file('book_image');
-        // $extension = $book_image->getClientOriginalExtension();
-        // // // the filename needs to be unique, I use title and add the date to guarantee a unique filename, ISBN would be better here.
-        // $filename = date('Y-m-d-His') . '_' . $request->input('title') . '.'. $extension;
-
-        // // // store the file $book_image in /public/images, and name it $filename
-        // $path = $book_image->storeAs('public/images', $filename);
-
+       
+        
         $drink->update([
             'name' => $request->name,
             'price' => $request->price,
             'quantity' => $request->quantity,
-            // 'book_image' => $filename,
             'alcohol_level' => $request->alcohol_level
         ]);
 

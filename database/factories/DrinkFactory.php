@@ -22,7 +22,8 @@ class DrinkFactory extends Factory
             'name' => $this->faker->word,
         'price' => 12.50,
             'quantity' =>$this->faker->numberBetween(0, 1000000),
-            'alcohol_level' => $this->faker->numberBetween(0, 100)
+            'alcohol_level' => $this->faker->numberBetween(0, 100),
+            // 'distillery_id' => 1
             // 'drink_image' => "book_placeholder.jpg",
             
         ];

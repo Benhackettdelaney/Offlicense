@@ -10,8 +10,7 @@ class Distillery extends Model
     use HasFactory;
     protected $fillable = ['name', 'address'];
 
-    // returns the publisher's books
-    // eg. $publisher->books
+   
     public function drinks()
     {
         return $this->hasMany(Drink::class);
