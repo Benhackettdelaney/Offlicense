@@ -60,7 +60,7 @@ class DrinkController extends Controller
             'alcohol_level' =>'required',
             //'drink' => 'file|image|dimensions:width=300,height=400'
             // 'drink' => 'file|image',
-            'publisher_id' => 'required'
+            'distillery_id' => 'required'
         ]);
 
        
@@ -103,14 +103,14 @@ class DrinkController extends Controller
     {
         $user = Auth::user();
         $user->authorizeRoles('admin');
-
+        $distilleries = Distillery::all();
       
-
     
 
         // Load the edit view which will display the edit form
         // Pass in the current drink so that it appears in the form.
-        return view('admin.drinks.edit')->with('drink', $drink);
+        // return view('admin.drinks.edit')->with('drink', $drink, 'distilleries', $distilleries);
+        return view('admin.drinks.edit', compact('drink', 'distilleries'));
     }
 
     /**
@@ -131,7 +131,7 @@ class DrinkController extends Controller
             'price' => 'required',
             'quantity' => 'required|max:500',
             'alcohol_level' =>'required',
-        
+            'distillery_id' => 'required'
         ]);
 
        
@@ -140,7 +140,8 @@ class DrinkController extends Controller
             'name' => $request->name,
             'price' => $request->price,
             'quantity' => $request->quantity,
-            'alcohol_level' => $request->alcohol_level
+            'alcohol_level' => $request->alcohol_level,
+            'distillery_id' => $request->distillery_id
         ]);
 
         return to_route('admin.drinks.show', $drink)->with('success','Drink updated successfully');

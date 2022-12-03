@@ -34,7 +34,7 @@ class DistilleryController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.distilleries.create');
     }
 
     /**
@@ -45,7 +45,7 @@ class DistilleryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        
     }
 
     /**
@@ -74,7 +74,7 @@ class DistilleryController extends Controller
      */
     public function edit($id)
     {
-        //
+        return view('admin.distilleries.edit');
     }
 
     /**
@@ -86,7 +86,7 @@ class DistilleryController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        return view('admin.distilleries.edit');
     }
 
     /**

@@ -3,7 +3,8 @@
 use App\Http\Controllers\Admin\DrinkController as AdminDrinkkController;
 use App\Http\Controllers\User\DrinkController as UserDrinkController;
 use App\Http\Controllers\Admin\DrinkController as AdminDrinkController;
-use App\Http\Controllers\User\PublisherController as UserPublisherController;
+use App\Http\Controllers\Admin\DistilleryController as AdminDistilleryController;
+use App\Http\Controllers\User\DistilleryController as UserDistilleryController;
 
 use Database\Seeders\DrinkSeeder;
 use Illuminate\Support\Facades\Route;
@@ -30,7 +31,7 @@ Route::get('/dashboard', function () {
 require __DIR__.'/auth.php';
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Route::get('/home/publishers', [App\Http\Controllers\HomeController::class, 'publisherIndex'])->name('home.publisher.index');
+Route::get('/home/distilleries', [App\Http\Controllers\HomeController::class, 'distilleryIndex'])->name('home.distillery.index');
 
 
 // This will create all the routes for Book
@@ -41,7 +42,7 @@ Route::resource('/user/drinks', UserDrinkController::class)->middleware(['auth']
 
 // This will create all the routes for Publisher functionality.
 // and the routes will only be available when a user is logged in
-Route::resource('/admin/publishers', AdminPublisherController::class)->middleware(['auth'])->names('admin.publishers');
+Route::resource('/admin/distilleries', AdminDistilleryController::class)->middleware(['auth'])->names('admin.distilleries');
 
 // the ->only at the end of this statement says only create the index and show routes.
-Route::resource('/user/publishers',UserPublisherController::class)->middleware(['auth'])->names('user.publishers')->only(['index', 'show']);
+Route::resource('/user/distilleries',UserDistilleryController::class)->middleware(['auth'])->names('user.distilleries')->only(['index', 'show']);

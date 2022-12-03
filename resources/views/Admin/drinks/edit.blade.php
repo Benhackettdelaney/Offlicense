@@ -26,7 +26,7 @@
                     type="text"
                     name="price"
                     field="price"
-                    placeholder="price..."
+                    placeholder="price"
                     class="w-full mt-6"
                     :value="@old('price', $drink->price)"></x-text-input>
 
@@ -35,7 +35,7 @@
                     name="quantity"
                     rows="10"
                     field="quantity"
-                    placeholder="quantity..."
+                    placeholder="quantity"
                     class="w-full mt-6"
                     :value="@old('quantity', $drink->quantity)"></x-text-input>
 
@@ -43,9 +43,19 @@
                     type="text"
                     name="alcohol_level"
                     field="alcohol_level"
-                    placeholder="alcohol level..."
+                    placeholder="alcohol level"
                     class="w-full mt-6"
                     :value="@old('alcohol_level',$drink->alcohol_level)"></x-text-input>
+
+                    <div class="form-group">
+                        <label for="distillery">Distillery</label>
+                        <select name="distillery_id">
+                          @foreach ($distilleries as $distillery)
+                            <option value="{{$distillery->id}}" {{(old('distillery_id') == $distillery->id) ? "selected" : ""}}>
+                              {{$distillery->name}}
+                            </option>
+                          @endforeach
+                     </select>
 
                <x-primary-button class="mt-6">Save Drink</x-primary-button>
                 </form>

@@ -21,7 +21,7 @@
 
                         <h3 class="font-bold text-1xl"> <strong> Distillery Name </strong>
                         {{$drink->distillery->name}} </h3>
-                        {{$drink->name}}
+                        {{$drink->price}}
 
                     </p>
 

@@ -28,6 +28,7 @@
                         :value="@old('price')"></x-text-input>
 
                     <x-text-input
+                        type="text" 
                         name="quantity"
                         rows="10"
                         field="quantity"
