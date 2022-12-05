@@ -24,11 +24,12 @@
 
                 <x-text-input
                     type="text"
-                    name="adress"
-                    field="price"
-                    placeholder="price"
+                    name="address"
+                    field="address"
+                    placeholder="address"
                     class="w-full mt-6"
-                    :value="@old('price', $drink->price)"></x-text-input>
+                    :value="@old('address', $drink->address)"
+                    ></x-text-input>
 
 
                <x-primary-button class="mt-6">Save Distillery</x-primary-button>
