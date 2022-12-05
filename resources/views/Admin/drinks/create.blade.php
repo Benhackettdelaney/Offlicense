@@ -54,6 +54,15 @@
                               {{$distillery->name}}
                             </option>
                           @endforeach
+
+                          <div class="form-group">
+                        <label for="events"> <strong> Events</strong> <br> </label>
+                        @foreach ($events as $event)
+                            <input type="checkbox", value="{{$event->id}}" name="events[]">
+                           {{$event->name}}
+                        @endforeach
+                    </div>
+
                      </select>
 
 
