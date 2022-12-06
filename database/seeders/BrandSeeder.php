@@ -7,7 +7,7 @@ use App\Models\Drink;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
-class AuthorSeeder extends Seeder
+class BrandSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -23,7 +23,7 @@ class AuthorSeeder extends Seeder
         foreach(Drink::all() as $drink)
         {
             $events = Event::inRandomOrder()->take(rand(1,3))->pluck('id');
-            $drink->authors()->attach($events);
+            $drink->events()->attach($events);
         }
     }
 }

@@ -25,7 +25,7 @@ class DrinkController extends Controller
        //$books = Book::all();
        // $books = Book::paginate(10);
        // $books = Book::with('publisher')->get();
-       $drink = Drink::with('distillery')
+       $drinks = Drink::with('distillery')
          ->with('events')
          ->get();
 
@@ -66,9 +66,7 @@ class DrinkController extends Controller
             'price' => 'required',
             'quantity' => 'required',
             'alcohol_level' => 'required|max:500',
-          //  'author' =>'required',
-            //'book_image' => 'file|image|dimensions:width=300,height=400'
-            // 'book_image' => 'file|image',
+        
             'distilleries_id' => 'required',
             'events' =>['required' , 'exists:events,id']
         ]);

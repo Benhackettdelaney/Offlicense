@@ -4,7 +4,7 @@ namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
-use App\Models\Publisher;
+use App\Models\Distillery;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -23,6 +23,7 @@ class DatabaseSeeder extends Seeder
         // seeds the drinks table with 20 books for each Publisher.
         // $this->call(DrinkSeeder::class);
         $this->call(DistillerySeeder::class);
+        $this->call(EventSeeder::class);
 
 
     }
