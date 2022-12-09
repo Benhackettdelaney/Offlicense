@@ -19,7 +19,7 @@
                     placeholder="name"
                     class="w-full"
                     autocomplete="off"
-                    :value="@old('name', $drink->name)"
+                    :value="@old('name', $distillery->name)"
                    ></x-text-input>
 
                 <x-text-input
@@ -28,7 +28,7 @@
                     field="address"
                     placeholder="address"
                     class="w-full mt-6"
-                    :value="@old('address', $drink->address)"
+                    :value="@old('address', $distillery->address)"
                     ></x-text-input>
 
 

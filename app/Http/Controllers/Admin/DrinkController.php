@@ -67,7 +67,7 @@ class DrinkController extends Controller
             'quantity' => 'required',
             'alcohol_level' => 'required|max:500',
         
-            'distilleries_id' => 'required',
+            'distillery_id' => 'required',
             'events' =>['required' , 'exists:events,id']
         ]);
 
@@ -78,12 +78,11 @@ class DrinkController extends Controller
 
         // store the file $book_image in /public/images, and name it $filename
         // $path = $book_image->storeAs('public/images', $filename);
-
         $drink = Drink::create([
-            'name' => 'required',
-            'price' => 'required',
-            'quantity' => 'required',
-            'alcohol_level' => 'required|max:500',
+            'name' => $request->name,
+            'price' => $request->price,
+            'quantity' => $request->quantity,
+            'alcohol_level' => $request->alcohol_level,
             // 'book_image' => $filename,
         //    'author' => $request->author,
             'distillery_id' => $request->distillery_id
@@ -123,6 +122,7 @@ class DrinkController extends Controller
     {
         $user = Auth::user();
         $user->authorizeRoles('admin');
+        $distilleries = Distillery::all();
 
         // This user id check below was implemented as part of LiteNote
         // I don't have a user id linked to books,so I don't need it here - in CA 2 we will allow only admin users to edit books.
@@ -134,7 +134,7 @@ class DrinkController extends Controller
 
         // Load the edit view which will display the edit form
         // Pass in the current book so that it appears in the form.
-        return view('admin.drinks.edit')->with('drink', $drink);
+        return view('admin.drinks.edit')->with('drink', $drink)->with('distilleries', $distilleries);
     }
 
     /**
@@ -169,10 +169,10 @@ class DrinkController extends Controller
         // $path = $book_image->storeAs('public/images', $filename);
 
         $drink->update([
-            'name' => 'required',
-            'price' => 'required',
-            'quantity' => 'required',
-            'alcohol_level' => 'required|max:500',
+            'name' => $request->name,
+            'price' => $request->price,
+            'quantity' => $request->quantity,
+            'alcohol_level' => $request->alcohol_level,
             // 'book_image' => $filename,
        //     'author' => $request->author
         ]);
@@ -190,7 +190,7 @@ class DrinkController extends Controller
     {
         $user = Auth::user();
         $user->authorizeRoles('admin');
-        $book->delete();
+        $drink->delete();
 
         return to_route('admin.drinks.index')->with('success', 'Drink deleted successfully');
     }

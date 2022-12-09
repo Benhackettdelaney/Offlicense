@@ -12,11 +12,14 @@
 
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
+                    <x-nav-link :href="route('admin.drinks.index')" :active="request()->routeIs('dashboard')">
                         {{ __('Drink') }}
                     </x-nav-link>
                     <x-nav-link :href="route('admin.distilleries.index')" :active="request()->routeIs('admin.distilleries.index')">
                         {{ __('Distilleries') }}
+                    </x-nav-link>
+                    <x-nav-link :href="route('admin.events.index')" :active="request()->routeIs('admin.events.index')">
+                        {{ __('Events') }}
                     </x-nav-link>
                 </div>
             </div>

@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::table('drinks', function (Blueprint $table) {
             $table->unsignedBigInteger('distillery_id');
-            $table->foreign('distillery_id')->references('id')->on('distilleries')->onUpdate('cascade')->onDelete('restrict');
+            $table->foreign('distillery_id')->references('id')->on('distilleries')->onUpdate('cascade')->onDelete('cascade');
          });
     }
 

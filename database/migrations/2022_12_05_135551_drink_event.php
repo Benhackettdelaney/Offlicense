@@ -18,8 +18,8 @@ return new class extends Migration
             $table->unsignedBigInteger('event_id');
             $table->unsignedBigInteger('drink_id');
 
-            $table->foreign('event_id')->references('id')->on('events')->onUpdate('cascade')->onDelete('restrict');
-            $table->foreign('drink_id')->references('id')->on('drinks')->onUpdate('cascade')->onDelete('restrict');
+            $table->foreign('event_id')->references('id')->on('events')->onUpdate('cascade')->onDelete('cascade');
+            $table->foreign('drink_id')->references('id')->on('drinks')->onUpdate('cascade')->onDelete('cascade');
             $table->timestamps();
         });
     }

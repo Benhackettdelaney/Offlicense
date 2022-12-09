@@ -5,6 +5,7 @@ use App\Http\Controllers\User\DrinkController as UserDrinkController;
 use App\Http\Controllers\Admin\DrinkController as AdminDrinkController;
 use App\Http\Controllers\Admin\DistilleryController as AdminDistilleryController;
 use App\Http\Controllers\User\DistilleryController as UserDistilleryController;
+use App\Http\Controllers\Admin\DistilleryController as AdminEventController;
 
 use Database\Seeders\DrinkSeeder;
 use Illuminate\Support\Facades\Route;
@@ -46,3 +47,6 @@ Route::resource('/admin/distilleries', AdminDistilleryController::class)->middle
 
 // the ->only at the end of this statement says only create the index and show routes.
 Route::resource('/user/distilleries',UserDistilleryController::class)->middleware(['auth'])->names('user.distilleries')->only(['index', 'show']);
+
+Route::resource('/admin/events', AdminEventController::class)->middleware(['auth'])->names('admin.events');
+

@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Event;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class EventController extends Controller
 {
@@ -14,7 +16,15 @@ class EventController extends Controller
      */
     public function index()
     {
-        //
+        $user = Auth::user();
+        $user->authorizeRoles('admin');
+
+       $events = Event::all();
+       // $publishers = Publisher::paginate(10);
+       // need to test if with 'books' works
+       // $publishers = Publisher::with('books')->get();
+
+        return view('admin.events.index')->with('events', $events);
     }
 
     /**
@@ -24,7 +34,7 @@ class EventController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.events.create');
     }
 
     /**
@@ -35,18 +45,39 @@ class EventController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $user = Auth::user();
+        $user->authorizeRoles('admin');
+
+
+        $request->validate([
+            'name' => 'required',
+            'bio' => 'required',
+        ]);
+
+        $event = Event::create([
+            'name' => $request->name,
+            'bio' => $request->bio,
+        ]);
+
+        return to_route('admin.events.index');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  Event $publisher
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Event $event)
     {
-        //
+        $user = Auth::user();
+        $user->authorizeRoles('admin');
+
+        if(!Auth::id()) {
+           return abort(403);
+         }
+
+        return view('admin.events.show')->with('event', $event);
     }
 
     /**
@@ -55,9 +86,9 @@ class EventController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Event $event)
     {
-        //
+        return view('admin.events.edit')->with('event', $event);
     }
 
     /**
@@ -67,9 +98,14 @@ class EventController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Event $event)
     {
-        //
+       $event->update([
+        'name' => $request->name,
+        'bio' => $request->bio,
+        ]);
+
+        return to_route('admin.events.show', $event)->with('success','Event updated successfully');
     }
 
     /**
@@ -78,8 +114,12 @@ class EventController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Event $event)
     {
-        //
+        $user = Auth::user();
+        $user->authorizeRoles('admin');
+        $event->delete();
+
+        return to_route('admin.event.index')->with('success', 'Event deleted successfully');
     }
 }

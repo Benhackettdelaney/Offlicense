@@ -45,7 +45,21 @@ class DistilleryController extends Controller
      */
     public function store(Request $request)
     {
-        
+        $user = Auth::user();
+        $user->authorizeRoles('admin');
+
+
+        $request->validate([
+            'name' => 'required',
+            'address' => 'required',
+        ]);
+
+        $distillery = Distillery::create([
+            'name' => $request->name,
+            'address' => $request->address,
+        ]);
+
+        return to_route('admin.distilleries.index');
     }
 
     /**
@@ -72,9 +86,9 @@ class DistilleryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Distillery $distillery)
     {
-        return view('admin.distilleries.edit');
+        return view('admin.distilleries.edit')->with('distillery', $distillery);
     }
 
     /**
@@ -84,9 +98,14 @@ class DistilleryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Distillery $distillery)
     {
-        return view('admin.distilleries.edit');
+       $distillery->update([
+        'name' => $request->name,
+        'address' => $request->address,
+        ]);
+
+        return to_route('admin.distilleries.show', $distillery)->with('success','distillery updated successfully');
     }
 
     /**
@@ -95,8 +114,12 @@ class DistilleryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Distillery $distillery)
     {
-        //
+        $user = Auth::user();
+        $user->authorizeRoles('admin');
+        $distillery->delete();
+
+        return to_route('admin.distilleries.index')->with('success', 'Distillery deleted successfully');
     }
 }

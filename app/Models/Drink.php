@@ -15,9 +15,9 @@ class Drink extends Model
         return $this->belongsTo(Distillery::class);
     }
 
-    public function authors()
+    public function events()
     {
-        return $this->belongstoMany(Author::class)->withTimestamps();
+        return $this->belongstoMany(Event::class)->withTimestamps();
     }
 
 
