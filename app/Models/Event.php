@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Event extends Model
 {
     use HasFactory;
-    protected $fillable = ['name', 'address','bio'];
+    protected $fillable = ['name', 'address', 'bio'];
 
     // this function allows you do this $author->books
     // so if you have an author object, it will return all the books belonging to that author

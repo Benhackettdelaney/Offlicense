@@ -1,7 +1,6 @@
 <?php
 
 namespace App\Http\Controllers\Admin;
-
 use App\Http\Controllers\Controller;
 use App\Models\Event;
 use Illuminate\Http\Request;
@@ -51,11 +50,12 @@ class EventController extends Controller
 
         $request->validate([
             'name' => 'required',
-            'bio' => 'required',
+            'address' => 'required',
         ]);
 
         $event = Event::create([
             'name' => $request->name,
+            'address' => $request->address,
             'bio' => $request->bio,
         ]);
 
@@ -70,6 +70,7 @@ class EventController extends Controller
      */
     public function show(Event $event)
     {
+
         $user = Auth::user();
         $user->authorizeRoles('admin');
 
@@ -102,6 +103,7 @@ class EventController extends Controller
     {
        $event->update([
         'name' => $request->name,
+        'address' => $request->address,
         'bio' => $request->bio,
         ]);
 
@@ -120,6 +122,6 @@ class EventController extends Controller
         $user->authorizeRoles('admin');
         $event->delete();
 
-        return to_route('admin.event.index')->with('success', 'Event deleted successfully');
+        return to_route('admin.events.index')->with('success', 'Event deleted successfully');
     }
 }

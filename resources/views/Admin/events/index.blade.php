@@ -15,7 +15,7 @@
             @forelse ($events as $event)
                 <div class="my-6 p-6 bg-white border-b border-gray-200 shadow-sm sm:rounded-lg">
                     <h2 class="font-bold text-2xl">
-                    <a href="{{ route('admin.events.show', $event) }}"> <strong> Event ID </strong> {{ $event->id }}</a>
+                    <a href="{{ route('admin.events.show', $event) }}"> <strong> Event ID </strong></a>
                     </h2>
                     <p class="mt-2">
 

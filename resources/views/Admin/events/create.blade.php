@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Create Event') }}
+            {{ __('Create event') }}
         </h2>
     </x-slot>
 
@@ -22,6 +22,15 @@
                         
                         <x-text-input
                         type="text"
+                        name="address"
+                        field="address"
+                        placeholder="address"
+                        class="w-full"
+                        autocomplete="off"
+                        :value="@old('address')"></x-text-input>
+
+                        <x-text-input
+                        type="text"
                         name="bio"
                         field="bio"
                         placeholder="bio"
@@ -29,7 +38,7 @@
                         autocomplete="off"
                         :value="@old('bio')"></x-text-input>
 
-                    <x-primary-button class="mt-6">Save Events</x-primary-button>
+                    <x-primary-button class="mt-6">Save event</x-primary-button>
                 </form>
             </div>
         </div>

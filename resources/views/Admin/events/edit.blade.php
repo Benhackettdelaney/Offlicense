@@ -19,8 +19,17 @@
                     placeholder="name"
                     class="w-full"
                     autocomplete="off"
-                    :value="@old('name', $events->name)"
+                    :value="@old('name', $event->name)"
                    ></x-text-input>
+
+                <x-text-input
+                    type="text"
+                    name="address"
+                    field="address"
+                    placeholder="address"
+                    class="w-full mt-6"
+                    :value="@old('address', $event->address)"
+                    ></x-text-input>
 
                 <x-text-input
                     type="text"
@@ -28,11 +37,11 @@
                     field="bio"
                     placeholder="bio"
                     class="w-full mt-6"
-                    :value="@old('address', $events->address)"
+                    :value="@old('bio', $event->bio)"
                     ></x-text-input>
 
 
-               <x-primary-button class="mt-6">Save Event</x-primary-button>
+               <x-primary-button class="mt-6">Save event</x-primary-button>
                 </form>
             </div>
         </div>

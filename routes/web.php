@@ -1,11 +1,11 @@
 <?php
 
-use App\Http\Controllers\Admin\DrinkController as AdminDrinkkController;
+
 use App\Http\Controllers\User\DrinkController as UserDrinkController;
 use App\Http\Controllers\Admin\DrinkController as AdminDrinkController;
 use App\Http\Controllers\Admin\DistilleryController as AdminDistilleryController;
 use App\Http\Controllers\User\DistilleryController as UserDistilleryController;
-use App\Http\Controllers\Admin\DistilleryController as AdminEventController;
+use App\Http\Controllers\Admin\EventController as AdminEventController;
 
 use Database\Seeders\DrinkSeeder;
 use Illuminate\Support\Facades\Route;
