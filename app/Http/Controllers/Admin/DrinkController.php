@@ -9,11 +9,12 @@ use App\Models\Distillery;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-
+// the controller is used to display the functions that we put in such as delete, edit and index
+// view all drinks works by the index showing information from the database to the controller which displays it to the website
 class DrinkController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * showing the resources that are being taken from
      *
      * @return \Illuminate\Http\Response
      */
@@ -38,6 +39,8 @@ class DrinkController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    
+    // connected to the create function displays create page after button has been selected
     public function create()
     {
         $user = Auth::user();

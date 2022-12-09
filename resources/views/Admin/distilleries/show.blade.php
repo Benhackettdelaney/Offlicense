@@ -7,18 +7,17 @@
 
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <!--alert-success is a component which I created using php artisan make:component alert-success
-            have a look at the code in views/components/alert-success.blade.php -->
+           <!-- this is a success alert that will show when the edit has been successful -->
             <x-alert-success>
                 {{ session('success') }}
             </x-alert-success>
 
             <div class="flex">
 
-                <!-- when EDIT BUTTON is clicked, route to admin.publishers.edit -->
+                <!-- when clicking this edit button it is routed to the distillery edit page -->
                 <a href="{{ route('admin.distilleries.edit', $distillery) }}" class="btn-link ml-auto">Edit</a>
 
-                <!-- delete button is wrapped in a form, with the delete method. -->
+                <!-- this is the delete function and the button together -->
                 <form action="{{ route('admin.distilleries.destroy', $distillery) }}" method="post">
                     @method('delete')
                     @csrf
@@ -27,7 +26,7 @@
             <div class="my-6 p-6 bg-white border-b border-gray-200 shadow-sm sm:rounded-lg">
                 <table class="table table-hover">
                     <tbody>
-
+                    <!-- the information that will display on the page, can be edited or deleted, it will display when clicked to edit by an admin -->
                         <tr>
                             <td class="font-bold ">ID  </td>
                             <td>{{ $distillery->id }}</td>
